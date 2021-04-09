@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    server:
+        build: ./nest-api/
+        ports:
+            - 3000:3000
+        entrypoint: .docker/entrypoint.sh
+
+    app:
+        build: ./react-front/
+        ports:
+            - 3001:3000
+        entrypoint: .docker/entrypoint.sh
+        depends_on:
+            - server
+       
